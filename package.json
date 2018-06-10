@@ -1,0 +1,28 @@
+{
+  "name": "explorerapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hdavid27/explorerAPI.git"
+  },
+  "author": "Hugo David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hdavid27/explorerAPI/issues"
+  },
+  "homepage": "https://github.com/hdavid27/explorerAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "intel": "^1.2.0",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "rekuire": "^0.1.9"
+  }
+}
