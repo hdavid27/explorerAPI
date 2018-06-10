@@ -12,7 +12,9 @@ var BaseErrorGenerator = function() {
             };
 
         	var error = new Error(JSON.stringify(data));
-        	error.statusCode = httpCode;
+            error.statusCode = httpCode;
+            error.errorMessage = message;
+            error.errorDetails = "" + details;
 
         	return error;
         }
