@@ -12,7 +12,7 @@ var database = {
 };
 
 var logLevel = intel.INFO;
-var serverPort = 3000;
+var serverPort = process.env.PORT || 3000;
 
 module.exports = {
 
