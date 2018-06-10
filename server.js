@@ -12,11 +12,11 @@ var app = express();
 
 app.use(morgan('common'));
 
-app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(cookieParser());
 
-app.use('/', function (req, res) {
-    res.json("Explorer API")
+app.get('/', function (req, res) {
+    res.send("Explorer API")
 });
 
 app.use('/api', rekuire('routes/api'));
@@ -24,7 +24,7 @@ app.use('/api', rekuire('routes/api'));
 //unhandled request
 app.use(function (req, res) {
     logger.error("Route was not handled:", req.originalUrl);
-    res.status(error.statusCode || 404).send("Route not found!").end(); 
+    res.status(404).send("Route not found!").end(); 
 });
 
 // Start listening

@@ -1,10 +1,7 @@
 var express = require('express');
-var rekuire = require('rekuire');
-var bodyParser = require('body-parser');
 
+var routerAPI = express.Router();
 
-var router = express.Router();
+routerAPI.use('/files', require('./fileexplorer'));
 
-
-
-module.exports = router;
+module.exports = routerAPI;
