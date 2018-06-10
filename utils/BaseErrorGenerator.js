@@ -6,10 +6,10 @@ var BaseErrorGenerator = function() {
 
         buildError: function(httpCode, message, details) {
 
-            var data;
-
-            data.errorMessage = message
-            data.errorDetails = details;
+            var data = {
+                errorMessage : message,
+                errorDetails : "" + details
+            };
 
         	var error = new Error(JSON.stringify(data));
         	error.statusCode = httpCode;
