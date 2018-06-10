@@ -15,6 +15,10 @@ app.use(morgan('common'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+app.use('/', function (req, res) {
+    res.json("Explorer API")
+});
+
 app.use('/api', rekuire('routes/api'));
 
 //unhandled request
