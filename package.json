@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "intel": "^1.2.0",
+    "mongodb": "^3.0.10",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "rekuire": "^0.1.9"
