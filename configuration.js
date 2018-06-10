@@ -4,11 +4,11 @@ var intel = require('intel');
 
 
 var database = {
-	host : 'localhost',
-	port : '5432',
-	name : 'database',
-	username : '',
-	password : ''
+	host : process.env.DB_HOST || '',
+	port : process.env.DB_PORT || '',
+	name : process.env.DB_NAME || '',
+	username : process.env.DB_USERNAME ||  '',
+	password : process.env.DB_PASSWORD ||  ''
 };
 
 var logLevel = intel.INFO;
@@ -44,6 +44,10 @@ module.exports = {
 
 	getDatabasePassword: function() {
 		return database.password;
+	},
+
+	getMongoDBUrl: function(){
+		return 'mongodb://' + database.username + ':' + database.password + '@' + database.host + '/' + database.name
 	}
 
 };
