@@ -17,14 +17,15 @@ var FileExplorerService = function(){
             .then(function(dbConnection){
 
 
+                return [
+                    dbConnection,
+                    dbConnection.db(configuration.getDatabaseName()).collection('files').find({}).toArray()
+                ];
 
-                return [dbConnection, dbConnection.db(configuration.getDatabaseName()).collection('files').find({}).toArray()];
+            }).spread(function(dbConnection, result){
 
-            }).spread(function(dbConnection, error, result){
+                dbConnection.close();
 
-                //dbConnection.close();
-
-                console.log('ERROR', error);
                 console.log('RESULT', result);
                 
 

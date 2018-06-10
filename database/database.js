@@ -12,7 +12,7 @@ var Database = function(){
 
             return new Promise(function(resolve, reject){
                 //connect to database
-                mongo.MongoClient.connect(configuration.getMongoDBUrl(), function(err, db){
+                mongo.MongoClient.connect(configuration.getMongoDBURI(), function(err, db){
                         
                     if(err){
                         reject(err)
