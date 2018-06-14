@@ -10,22 +10,24 @@ var routerFiles = express.Router();
 routerFiles.use(bodyParser.json());
 
 //GET files from root
-routerFiles.get('/', function(req, res){
+// routerFiles.get('/', function(req, res){
 
-    new FileExplorerService().getFiles()
-    .then(function(files){
-        res.json(files);
-    }).catch(function(error){
-        logger.error(error);
-        res.status(error.statusCode || 500).send(error).end();
-    });
+//     new FileExplorerService().getFiles(req.params.offset)
+//     .then(function(files){
+//         res.json(files);
+//     }).catch(function(error){
+//         logger.error(error);
+//         res.status(error.statusCode || 500).send(error).end();
+//     });
 
-});
+// });
 
 //GET files with parent
-routerFiles.get('/:parent', function(req, res){
+routerFiles.get('/:parent/:offset', function(req, res){
 
-        new FileExplorerService().getFiles(req.params.parent)
+    console.log("Params:", req.params);
+
+        new FileExplorerService().getFiles(req.params.offset, req.params.parent)
         .then(function(files){
             res.json(files);
         }).catch(function(error){

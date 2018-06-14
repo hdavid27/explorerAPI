@@ -8,6 +8,8 @@ var DB_NAME = process.env.DB_NAME || 'heroku_mz3r4298';
 var logLevel = intel.DEBUG;
 var serverPort = process.env.PORT || 3000;
 
+var queryLimit = 5;
+
 var crossdomainHeaders = {
 	'Access-Control-Allow-Origin' : function(request) {
 		return request.get('origin'); // Since we are using credentials, we can only return a single origin here! Use this to filter the allowed origins.
@@ -40,6 +42,10 @@ module.exports = {
 	// Crossdomain
 	getCrossdomainHeaders: function() {
 		return crossdomainHeaders;
+	},
+
+	getQueryLimit: function(){
+		return queryLimit;
 	}
 
 };
