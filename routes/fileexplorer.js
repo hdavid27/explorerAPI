@@ -10,7 +10,7 @@ var routerFiles = express.Router();
 //GET files from root
 routerFiles.get('/', function(req, res){
 
-    new FileExplorerService().getFiles()
+    new FileExplorerService().getFiles(req.params.offset)
     .then(function(files){
         res.json(files);
     }).catch(function(error){
@@ -23,7 +23,7 @@ routerFiles.get('/', function(req, res){
 //GET files with parent
 routerFiles.get('/:parent', function(req, res){
 
-        new FileExplorerService().getFiles(req.params.parent)
+        new FileExplorerService().getFiles(req.params.offset, req.params.parent)
         .then(function(files){
             res.json(files);
         }).catch(function(error){

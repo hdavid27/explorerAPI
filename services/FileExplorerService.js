@@ -101,9 +101,12 @@ var FileExplorerService = function(){
 
         },
 
-        getFiles: function(parent){
+        getFiles: function(offset, parent){
 
+            offset = offset || 0;
             parent = parent || 'root';
+
+            var limit = 5;
 
             return Database.getMongoDBConnection()
             .then(function(dbConnection){
@@ -116,7 +119,7 @@ var FileExplorerService = function(){
 
                 return [
                     dbConnection,
-                    collection.find(query).toArray()
+                    collection.find(query).limit(limit).offset(offset).toArray()
                 ];
 
             }).spread(function(dbConnection, result){
