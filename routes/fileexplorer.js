@@ -1,11 +1,13 @@
 var express = require('express');
 var rekuire = require("rekuire");
+var bodyParser = require('body-parser');
 
 var logger = rekuire('utils/LoggerProvider').getLogger();
 var FileExplorerService = rekuire('services/FileExplorerService')
 
 var routerFiles = express.Router();
 
+routerFiles.use(bodyParser.json());
 
 //GET files from root
 routerFiles.get('/', function(req, res){
@@ -35,6 +37,9 @@ routerFiles.get('/:parent', function(req, res){
 
 //Create new file
 routerFiles.post('/', function(req, res){
+
+    console.log(req.body, req.params);
+    
 
     new FileExplorerService().createFile(req.body.name, req.body.type, req.body.parent)
     .then(function(file){

@@ -2,7 +2,6 @@
 var express = require('express');
 var rekuire = require('rekuire');
 var morgan = require('morgan');
-var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var configuration = rekuire('configuration');
@@ -12,7 +11,7 @@ var app = express();
 
 app.use(morgan('common'));
 
-app.use(bodyParser.json());
+
 app.use(cookieParser());
 
 app.get('/', function (req, res) {

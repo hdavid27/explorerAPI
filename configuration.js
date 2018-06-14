@@ -2,8 +2,8 @@ var rekuire = require('rekuire');
 var path = require('path');
 var intel = require('intel');
 
-var MONGODB_URI = process.env.MONGODB_URI || '';
-var DB_NAME = process.env.DB_NAME || '';
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://heroku_mz3r4298:hdjh10gk9kk1juotmgb02ndaos@ds255260.mlab.com:55260/heroku_mz3r4298';
+var DB_NAME = process.env.DB_NAME || 'heroku_mz3r4298';
 
 var logLevel = intel.DEBUG;
 var serverPort = process.env.PORT || 3000;
