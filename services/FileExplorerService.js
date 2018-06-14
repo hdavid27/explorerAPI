@@ -8,8 +8,6 @@ var Database = rekuire('database/database');
 
 var FileExplorerService = function(){
 
-    var limit = 20;
-
     return {
 
         createFile: function(name, type, parent){
@@ -103,10 +101,10 @@ var FileExplorerService = function(){
 
         getFiles: function(offset, parent){
 
-            offset = offset || 0;
+            offset = parseInt(offset) || 0;
             parent = parent || 'root';
 
-            var limit = 5;
+            var limit = configuration.getQueryLimit();
 
             return Database.getMongoDBConnection()
             .then(function(dbConnection){
@@ -119,7 +117,7 @@ var FileExplorerService = function(){
 
                 return [
                     dbConnection,
-                    collection.find(query).limit(limit).offset(offset).toArray()
+                    collection.find(query).limit(limit).skip(offset).toArray()
                 ];
 
             }).spread(function(dbConnection, result){
