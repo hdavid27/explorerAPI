@@ -7,6 +7,7 @@ var logger = rekuire('utils/LoggerProvider').getLogger();
 
 var routerAPI = express.Router();
 
+//seting up cross domain headers
 routerAPI.use(function(request, response, next) {
     var crossdomainHeaders = configuration.getCrossdomainHeaders();
 
@@ -20,8 +21,11 @@ routerAPI.use(function(request, response, next) {
         response.header(key, value);
     });
 
-    if (request.method === 'OPTIONS') { response.end(); }
-    else { next(); }
+    if (request.method === 'OPTIONS') { 
+        response.end(); 
+    }else { 
+        next();
+    }
 })
 
 routerAPI.use('/files', require('./fileexplorer'));

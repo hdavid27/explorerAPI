@@ -3,6 +3,7 @@ var express = require('express');
 var rekuire = require('rekuire');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
 var configuration = rekuire('configuration');
 var logger = rekuire('utils/LoggerProvider').getLogger();
@@ -11,8 +12,8 @@ var app = express();
 
 app.use(morgan('common'));
 
-
 app.use(cookieParser());
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.send("Explorer API")

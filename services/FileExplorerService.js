@@ -159,6 +159,33 @@ var FileExplorerService = function(){
 
             });
 
+        },
+
+        aproveFile: function(fileId, aproved){
+            
+
+            if(!fileId || !aproved){
+                throw BaseErrorGenerator.buildError(400, 'Bad request!');
+            }
+
+            return Database.getMongoDBConnection()
+            .then(function(dbConnection){
+
+                var collection = dbConnection.db(configuration.getDatabaseName()).collection('files');
+
+                return [
+                    dbConnection,
+                    collection.updateOne({fileId: fileId}, {$set: {aproved: aproved}})
+                ];
+
+            }).spread(function(dbConnection, result){
+
+                dbConnection.close();
+
+                return result;
+
+            });
+
         }
 
     }
